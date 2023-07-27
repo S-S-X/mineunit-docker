@@ -10,11 +10,11 @@ exec 3>&-
 # Check for some hard errors
 grep_eronly=(grep '0 successes / 0 failures / [1-9] error.\? / 0 pending')
 grep_nospec=(grep 'No test files found')
-("${grep_eronly[@]}"<<<"$OUT" && "${grep_nospec[@]}"<<<"$OUT")&>/dev/null && echo "spec-missing=true" >> "${GITHUB_OUTPUT}"
+("${grep_eronly[@]}"<<<"$OUT" && "${grep_nospec[@]}"<<<"$OUT")&>/dev/null && echo "mineunit-spec-missing=true" >> "${GITHUB_OUTPUT}"
 
 # Remove some shell stuff and write output
 OUT="$(sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g'<<<"$OUT")"
-printf 'stdout<<END-OF-MINEUNIT-CONTENT\n%s\nEND-OF-MINEUNIT-CONTENT\n' "${OUT}" >> "${GITHUB_OUTPUT}"
+printf 'mineunit-stdout<<END-OF-MINEUNIT-CONTENT\n%s\nEND-OF-MINEUNIT-CONTENT\n' "${OUT}" >> "${GITHUB_OUTPUT}"
 
 # Return original error code
 exit $ERR

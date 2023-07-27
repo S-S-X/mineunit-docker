@@ -33,35 +33,26 @@ outputs:
   # Generated or supplied badge properties
   badge-name:
     description: "Code coverage badge name waiting for issues/#1"
-    value: ${{ steps.badge-wrapper-actions-issue-1.outputs.badge-name }}
   badge-label:
     description: "Code coverage badge label waiting for issues/#1"
-    value: ${{ steps.badge-wrapper-actions-issue-1.outputs.badge-label }}
   badge-status:
     description: "Code coverage badge status waiting for issues/#1"
-    value: "${{ steps.mineunit-coverage.outputs.total }} in ${{ steps.mineunit-coverage.outputs.files }} files"
   badge-color:
     description: "Code coverage badge color waiting for issues/#1"
-    value: ${{ steps.badge-wrapper-actions-issue-1.outputs.badge-color }}
 
   # Mineunit test framework output
   mineunit-stdout:
     description: "Stdout produced during busted run"
-    value: ${{ steps.mineunit-tests.outputs.stdout }}
   mineunit-spec-missing:
     description: "Set to true if no spec files found for busted"
-    value: ${{ steps.mineunit-tests.outputs.spec-missing }}
 
   mineunit-report:
     description: "Mineunit detailed test report"
-    value: ${{ steps.mineunit-report.outputs.report }}
 
   coverage-total:
     description: "Total test coverage percentage"
-    value: ${{ steps.mineunit-coverage.outputs.total }}
   coverage-files:
     description: "Number of files tested and total number of source files"
-    value: ${{ steps.mineunit-coverage.outputs.files }}
 
   # Help content / on demand documentation
   help-busted-spec-missing:
