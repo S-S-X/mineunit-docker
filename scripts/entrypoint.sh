@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export $(env | grep -- '-[^=]*=' | sed -r ':ape s/^([^-=]*)-/\1_/;tape' | xargs -0)
+env | grep -- '-[^=]*=' | sed -r ':ape s/^([^-=]*)-/\1_/;tape;s/^([^=]*=)(.*)$/\1"\2"/' | while read -r ENV; do export "$ENV"; done
 
 cd "${INPUT_WORKING_DIRECTORY}"
 
