@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export $(env | grep -- '-[^=]*=' | sed -r ':ape s/^([^-=]*)-/\1_/;tape' | xargs -d'\n')
+
 cd "${INPUT_WORKING_DIRECTORY}"
 
 echo "Running tests in $(pwd)"
